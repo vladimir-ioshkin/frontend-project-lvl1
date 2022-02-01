@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
+import startGame from '../index.js';
 
-const getRandom = () => {
+const getQuestion = () => {
   const number = Math.floor(Math.random() * 100);
   console.log(`Question: ${number}`);
   const isEven = number % 2 === 0;
@@ -14,18 +15,7 @@ const getRandom = () => {
 };
 
 const startEvenGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${userName}!`);
-
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  for (let i = 0; i < 3; i += 1) {
-    if (getRandom() === false) {
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${userName}!`);
+  startGame(getQuestion, 'Answer "yes" if the number is even, otherwise answer "no".');
 };
 
 export default startEvenGame;

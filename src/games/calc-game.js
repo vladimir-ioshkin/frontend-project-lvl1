@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+import startGame from '../index.js';
 
 const getQuestion = () => {
   const firstNumber = Math.floor(Math.random() * 20);
@@ -36,18 +37,7 @@ const getQuestion = () => {
 };
 
 const startCalcGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${userName}!`);
-
-  console.log('What is the result of the expression?');
-  for (let i = 0; i < 3; i += 1) {
-    if (getQuestion() === false) {
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${userName}!`);
+  startGame(getQuestion, 'What is the result of the expression?');
 };
 
 export default startCalcGame;
