@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import getIsPrime from '../helpers/get-is-prime.js';
 import startGame from '../index.js';
 
@@ -8,15 +7,10 @@ const getQuestion = () => {
   const number = Math.floor(Math.random() * MAX_NUMBER);
   const isPrime = getIsPrime(number);
 
-  console.log(`Question: ${number}`);
-  const answer = readlineSync.question('Your answer: ');
-
-  if ((isPrime && answer === 'yes') || (!isPrime && answer === 'no')) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${isPrime ? 'yes' : 'no'}'.`);
-  return false;
+  return {
+    question: number,
+    result: isPrime ? 'yes' : 'no',
+  };
 };
 
 const startPrimeGame = () => {

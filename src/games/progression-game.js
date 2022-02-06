@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import startGame from '../index.js';
 
 const MIN_NUMBER = 1;
@@ -22,15 +21,10 @@ const getQuestion = () => {
 
   const questionStr = arr.join(' ');
 
-  console.log(`Question: ${questionStr}`);
-
-  const answer = readlineSync.question('Your answer: ');
-  if (result === Number(answer)) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${result}'.`);
-  return false;
+  return {
+    question: questionStr,
+    result: String(result),
+  };
 };
 
 const startProgressionGame = () => {

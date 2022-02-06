@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import startGame from '../index.js';
 
 const PLUS = '+';
@@ -11,8 +10,6 @@ const getQuestion = () => {
   const secondNumber = Math.floor(Math.random() * MAX_NUMBER);
   const symbolsArr = [PLUS, MINUS, MULTIPLE];
   const randomSymbol = symbolsArr[Math.floor(Math.random() * symbolsArr.length)];
-
-  console.log(`Question: ${firstNumber} ${randomSymbol} ${secondNumber}`);
 
   let result;
   switch (randomSymbol) {
@@ -32,13 +29,10 @@ const getQuestion = () => {
       result = null;
   }
 
-  const answer = readlineSync.question('Your answer: ');
-  if (result === Number(answer)) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${result}'.`);
-  return false;
+  return {
+    question: `${firstNumber} ${randomSymbol} ${secondNumber}`,
+    result: String(result),
+  };
 };
 
 const startCalcGame = () => {
