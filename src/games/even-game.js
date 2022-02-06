@@ -1,10 +1,13 @@
 import readlineSync from 'readline-sync';
+import getIsEven from '../helpers/get-is-even.js';
 import startGame from '../index.js';
 
+const MAX_NUMBER = 100;
+
 const getQuestion = () => {
-  const number = Math.floor(Math.random() * 100);
+  const number = Math.floor(Math.random() * MAX_NUMBER);
   console.log(`Question: ${number}`);
-  const isEven = number % 2 === 0;
+  const isEven = getIsEven(number);
   const answer = readlineSync.question('Your answer: ');
   if ((isEven && answer === 'yes') || (!isEven && answer === 'no')) {
     console.log('Correct!');

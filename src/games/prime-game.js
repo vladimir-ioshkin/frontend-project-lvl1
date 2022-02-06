@@ -2,8 +2,10 @@ import readlineSync from 'readline-sync';
 import getIsPrime from '../helpers/get-is-prime.js';
 import startGame from '../index.js';
 
+const MAX_NUMBER = 100;
+
 const getQuestion = () => {
-  const number = Math.floor(Math.random() * 100);
+  const number = Math.floor(Math.random() * MAX_NUMBER);
   const isPrime = getIsPrime(number);
 
   console.log(`Question: ${number}`);
