@@ -1,33 +1,28 @@
 import startGame from '../index.js';
+import getRandomNumber from '../utils.js';
 
-const PLUS = '+';
-const MINUS = '-';
-const MULTIPLE = '*';
-const MAX_NUMBER = 20;
+const calculateResult = (firstNumber, secondNumber, operator) => {
+  switch (operator) {
+    case '+':
+      return firstNumber + secondNumber;
 
-const getQuestion = () => {
-  const firstNumber = Math.floor(Math.random() * MAX_NUMBER);
-  const secondNumber = Math.floor(Math.random() * MAX_NUMBER);
-  const symbolsArr = [PLUS, MINUS, MULTIPLE];
-  const randomSymbol = symbolsArr[Math.floor(Math.random() * symbolsArr.length)];
+    case '-':
+      return firstNumber - secondNumber;
 
-  let result;
-  switch (randomSymbol) {
-    case PLUS:
-      result = firstNumber + secondNumber;
-      break;
-
-    case MINUS:
-      result = firstNumber - secondNumber;
-      break;
-
-    case MULTIPLE:
-      result = firstNumber * secondNumber;
-      break;
+    case '*':
+      return firstNumber * secondNumber;
 
     default:
-      result = null;
+      return null;
   }
+};
+
+const getQuestion = () => {
+  const firstNumber = getRandomNumber();
+  const secondNumber = getRandomNumber();
+  const symbolsArr = ['+', '-', '*'];
+  const randomSymbol = symbolsArr[Math.floor(Math.random() * symbolsArr.length)];
+  const result = calculateResult(firstNumber, secondNumber, randomSymbol);
 
   return {
     question: `${firstNumber} ${randomSymbol} ${secondNumber}`,

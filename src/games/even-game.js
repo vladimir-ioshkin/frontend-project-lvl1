@@ -1,10 +1,12 @@
-import getIsEven from '../helpers/get-is-even.js';
 import startGame from '../index.js';
+import getRandomNumber from '../utils.js';
 
-const MAX_NUMBER = 100;
+function getIsEven(num) {
+  return num % 2 === 0;
+}
 
 const getQuestion = () => {
-  const number = Math.floor(Math.random() * MAX_NUMBER);
+  const number = getRandomNumber(1, 100);
   const isEven = getIsEven(number);
   const result = isEven ? 'yes' : 'no';
 

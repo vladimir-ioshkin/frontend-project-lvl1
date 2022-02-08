@@ -1,10 +1,15 @@
-import getIsPrime from '../helpers/get-is-prime.js';
 import startGame from '../index.js';
+import getRandomNumber from '../utils.js';
 
-const MAX_NUMBER = 100;
+function getIsPrime(num) {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i += 1) {
+    if (num % i === 0) return false;
+  }
+  return num > 1;
+}
 
 const getQuestion = () => {
-  const number = Math.floor(Math.random() * MAX_NUMBER);
+  const number = getRandomNumber(1, 100);
   const isPrime = getIsPrime(number);
 
   return {

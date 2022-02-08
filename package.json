@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/vladimir-ioshkin/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/vladimir-ioshkin/frontend-project-lvl1/actions)",
+  "description": "Hexlet project: Brain Games",
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",

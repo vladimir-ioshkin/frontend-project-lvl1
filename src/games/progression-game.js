@@ -1,20 +1,24 @@
 import startGame from '../index.js';
+import getRandomNumber from '../utils.js';
 
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 20;
+const MIN_INDEX = 0;
 const MAX_INDEX = 9;
 
-const getQuestion = () => {
-  const start = Math.floor(Math.random() * MAX_NUMBER);
-  const progStep = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER) + MIN_NUMBER);
-  const hiddenNumber = Math.floor(Math.random() * MAX_INDEX);
-
+const getProgression = (start, step, count) => {
   const arr = [start];
 
-  for (let i = 1; i <= MAX_INDEX; i += 1) {
-    arr[i] = arr[i - 1] + progStep;
+  for (let i = 1; i < count; i += 1) {
+    arr[i] = arr[i - 1] + step;
   }
 
+  return arr;
+};
+
+const getQuestion = () => {
+  const start = getRandomNumber();
+  const progStep = getRandomNumber();
+  const hiddenNumber = getRandomNumber(MIN_INDEX, MAX_INDEX);
+  const arr = getProgression(start, progStep, MAX_INDEX + 1);
   const result = arr[hiddenNumber];
 
   arr[hiddenNumber] = '..';

@@ -1,11 +1,13 @@
 import startGame from '../index.js';
-import getGcd from '../helpers/get-gcd.js';
+import getRandomNumber from '../utils.js';
 
-const MAX_NUMBER = 20;
+function getGcd(a, b) {
+  return b ? getGcd(b, a % b) : a;
+}
 
 const getQuestion = () => {
-  const firstNumber = Math.floor(Math.random() * MAX_NUMBER);
-  const secondNumber = Math.floor(Math.random() * MAX_NUMBER);
+  const firstNumber = getRandomNumber();
+  const secondNumber = getRandomNumber();
   const result = getGcd(firstNumber, secondNumber);
 
   return {
