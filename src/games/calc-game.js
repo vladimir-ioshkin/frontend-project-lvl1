@@ -1,6 +1,8 @@
 import startGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
+const operators = ['+', '-', '*'];
+
 const calculateResult = (firstNumber, secondNumber, operator) => {
   switch (operator) {
     case '+':
@@ -13,19 +15,18 @@ const calculateResult = (firstNumber, secondNumber, operator) => {
       return firstNumber * secondNumber;
 
     default:
-      return null;
+      throw new Error(`Unknown operator: '${operator}'!`);
   }
 };
 
 const getQuestion = () => {
   const firstNumber = getRandomNumber();
   const secondNumber = getRandomNumber();
-  const symbolsArr = ['+', '-', '*'];
-  const randomSymbol = symbolsArr[Math.floor(Math.random() * symbolsArr.length)];
-  const result = calculateResult(firstNumber, secondNumber, randomSymbol);
+  const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+  const result = calculateResult(firstNumber, secondNumber, randomOperator);
 
   return {
-    question: `${firstNumber} ${randomSymbol} ${secondNumber}`,
+    question: `${firstNumber} ${randomOperator} ${secondNumber}`,
     result: String(result),
   };
 };
