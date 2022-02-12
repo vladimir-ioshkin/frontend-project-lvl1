@@ -1,6 +1,8 @@
 import startGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
+const task = 'Find the greatest common divisor of given numbers.';
+
 function getGcd(a, b) {
   return b ? getGcd(b, a % b) : a;
 }
@@ -17,7 +19,7 @@ const getQuestion = () => {
 };
 
 const startGcdGame = () => {
-  startGame(getQuestion, 'Find the greatest common divisor of given numbers.');
+  startGame(getQuestion, task);
 };
 
 export default startGcdGame;

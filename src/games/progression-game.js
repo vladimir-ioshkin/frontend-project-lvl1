@@ -1,8 +1,11 @@
 import startGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
-const minIndex = 0;
-const maxIndex = 9;
+const task = 'What number is missing in the progression?';
+
+const minCount = 5;
+const maxCount = 10;
+const minHiddenElPosition = 1;
 
 const getProgression = (start, step, count) => {
   const progression = [start];
@@ -16,12 +19,14 @@ const getProgression = (start, step, count) => {
 
 const getQuestion = () => {
   const start = getRandomNumber();
-  const progStep = getRandomNumber();
-  const hiddenNumber = getRandomNumber(minIndex, maxIndex);
-  const progression = getProgression(start, progStep, maxIndex + 1);
-  const result = progression[hiddenNumber];
+  const step = getRandomNumber();
+  const count = getRandomNumber(minCount, maxCount);
+  const progression = getProgression(start, step, count);
+  const hiddenElPosition = getRandomNumber(minHiddenElPosition, count);
+  const hiddenElIndex = hiddenElPosition - 1;
+  const result = progression[hiddenElIndex];
 
-  progression[hiddenNumber] = '..';
+  progression[hiddenElIndex] = '..';
 
   const questionStr = progression.join(' ');
 
@@ -32,7 +37,7 @@ const getQuestion = () => {
 };
 
 const startProgressionGame = () => {
-  startGame(getQuestion, 'What number is missing in the progression?');
+  startGame(getQuestion, task);
 };
 
 export default startProgressionGame;

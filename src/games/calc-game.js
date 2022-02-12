@@ -1,7 +1,11 @@
 import startGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
+const task = 'What is the result of the expression?';
+
 const operators = ['+', '-', '*'];
+const minIndex = 0;
+const maxIndex = operators.length - 1;
 
 const calculateResult = (firstNumber, secondNumber, operator) => {
   switch (operator) {
@@ -22,7 +26,7 @@ const calculateResult = (firstNumber, secondNumber, operator) => {
 const getQuestion = () => {
   const firstNumber = getRandomNumber();
   const secondNumber = getRandomNumber();
-  const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+  const randomOperator = operators[getRandomNumber(minIndex, maxIndex)];
   const result = calculateResult(firstNumber, secondNumber, randomOperator);
 
   return {
@@ -32,7 +36,7 @@ const getQuestion = () => {
 };
 
 const startCalcGame = () => {
-  startGame(getQuestion, 'What is the result of the expression?');
+  startGame(getQuestion, task);
 };
 
 export default startCalcGame;
